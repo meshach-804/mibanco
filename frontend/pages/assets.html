@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Assets - Personal Budget App</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+  <div id="header-container"></div>
+
+  <main class="p-6 max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <!-- Form -->
+      <div class="bg-white p-6 rounded shadow">
+        <h2 class="text-2xl font-bold mb-4">Fixed Assets</h2>
+        <form id="asset-form" class="space-y-4">
+          <input type="hidden" id="asset-id" />
+          <input type="text" id="asset-name" placeholder="Asset Name (e.g., Car, House)" class="w-full p-2 border rounded" required />
+          <input type="text" id="asset-type" placeholder="Type (e.g., Vehicle, Property)" class="w-full p-2 border rounded" required />
+          <input type="number" id="asset-original-value" placeholder="Original Value" step="0.01" class="w-full p-2 border rounded" required />
+          <input type="number" id="asset-rate" placeholder="Annual Appreciation/Depreciation Rate (%)" step="0.01" class="w-full p-2 border rounded" required />
+          <label for="asset-date" class="block text-sm font-medium text-gray-700">Acquisition Date</label>
+          <input type="date" id="asset-date" class="w-full p-2 border rounded" required placeholder="Select acquisition date" title="Select the acquisition date of the asset" />
+          <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded">Add Asset</button>
+        </form>
+      </div>
+
+      <!-- Summary -->
+      <div class="bg-white p-6 rounded shadow">
+        <h2 class="text-2xl font-bold mb-6">Your Assets</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+          <div class="bg-blue-100 p-4 rounded shadow text-center">
+            <h4 class="text-lg font-medium">Current Assets (Liquid)</h4>
+            <p class="text-2xl font-bold text-blue-800" id="total-current">KES 0.00</p>
+          </div>
+          <div class="bg-green-100 p-4 rounded shadow text-center">
+            <h4 class="text-lg font-medium">Fixed Assets</h4>
+            <p class="text-2xl font-bold text-green-800" id="total-fixed">KES 0.00</p>
+          </div>
+          <div class="bg-purple-100 p-4 rounded shadow text-center">
+            <h4 class="text-lg font-medium">Total Assets</h4>
+            <p class="text-2xl font-bold text-purple-800" id="total-assets">KES 0.00</p>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="font-semibold mb-2">Current Assets (Liquid)</h4>
+          <p class="text-gray-700 mb-2 text-sm">These are automatically calculated from your available balance.</p>
+          <div class="bg-gray-100 p-3 rounded shadow-sm flex justify-between items-center">
+            <span>Available Funds</span>
+            <span id="available-funds" class="font-semibold">KES 0.00</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Asset List -->
+    <section class="mt-10">
+      <h3 class="text-xl font-semibold mb-4">Fixed Asset Records</h3>
+      <ul id="asset-list" class="space-y-4"></ul>
+    </section>
+  </main>
+  <script src="../js/main.js"></script>
+  <script src="/frontend/js/assets.js"></script>
+</body>
+</html>

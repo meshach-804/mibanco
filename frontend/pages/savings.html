@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Savings - Personal Budget App</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+  <div id="header-container"></div>
+
+  <main class="p-4 mt-[-0.5rem]">
+    <h2 class="text-2xl font-bold mb-4">Manage Savings</h2>
+
+    <div class="flex flex-col md:flex-row md:space-x-6">
+
+      <!-- Form Section -->
+      <div class="md:w-1/2 bg-white border border-gray-300 rounded shadow p-4 mb-6 md:mb-0 md:sticky md:top-6 h-fit space-y-6">
+
+        <!-- Add Deposit -->
+        <div>
+          <h3 class="text-lg font-semibold mb-2 text-green-700">Add to Savings</h3>
+          <form id="add-savings-form" class="space-y-4">
+            <input type="hidden" id="add-savings-id" />
+            <input id="add-savings-goal" type="text" placeholder="Goal (e.g. Emergency Fund)" required class="w-full p-2 border rounded" />
+            <input id="add-savings-amount" type="number" placeholder="Amount" required class="w-full p-2 border rounded" />
+            <label for="add-savings-date" class="block text-sm font-medium text-gray-700">Date</label>
+            <input id="add-savings-date" type="date" required class="w-full p-2 border rounded" />
+            <button id="add-submit-btn" type="submit" class="w-full px-4 py-2 bg-green-600 text-white rounded">Add Saving</button>
+          </form>
+        </div>
+
+        <!-- Withdraw -->
+        <div>
+          <h3 class="text-lg font-semibold mb-2 text-red-700">Withdraw from Savings</h3>
+          <form id="withdraw-savings-form" class="space-y-4">
+            <input type="hidden" id="withdraw-savings-id" />
+            <input id="withdraw-savings-amount" type="number" placeholder="Amount to withdraw" required class="w-full p-2 border rounded" />
+            <input id="withdraw-savings-reason" type="text" placeholder="Reason for withdrawal" required class="w-full p-2 border rounded" />
+            <label for="withdraw-savings-date" class="block text-sm font-medium text-gray-700">Date</label>
+            <input id="withdraw-savings-date" type="date" required class="w-full p-2 border rounded" />
+            <button id="withdraw-submit-btn" type="submit" class="w-full px-4 py-2 bg-red-600 text-white rounded">Withdraw</button>
+          </form>
+        </div>
+
+      </div>
+
+      <!-- History Section -->
+      <div class="md:w-1/2 bg-white border border-gray-300 rounded shadow flex flex-col h-[80vh] p-4">
+
+        <!-- Filter Buttons + Header -->
+        <div class="sticky top-0 z-20 bg-white pt-2 pb-3 border-b shadow-sm">
+          <div class="flex justify-end gap-2 mb-2">
+            <button onclick="filterSavings('all')" class="px-3 py-1 bg-gray-300 rounded">All</button>
+            <button onclick="filterSavings('deposit')" class="px-3 py-1 bg-green-400 text-white rounded">Deposits</button>
+            <button onclick="filterSavings('withdrawal')" class="px-3 py-1 bg-red-400 text-white rounded">Withdrawals</button>
+          </div>
+          <h3 class="text-xl font-bold text-gray-800 tracking-tight">Savings History</h3>
+        </div>
+
+        <!-- Scrollable History -->
+        <section class="flex-1 overflow-y-auto pr-1 mt-2">
+          <ul id="savings-list" class="space-y-2"></ul>
+        </section>
+
+        <!-- Summary -->
+        <div id="savings-summary" class="mt-4 border-t pt-3 text-right text-lg font-semibold text-blue-700">
+          Net Savings: $0.00
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="/frontend/js/main.js"></script>
+  <script src="/frontend/js/savings.js"></script>
+</body>
+</html>

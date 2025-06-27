@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lent Funds - Personal Budget App</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800 min-h-screen">
+  <div id="header-container"></div>
+
+  <main class="p-6 max-w-7xl mx-auto">
+    <h2 class="text-3xl font-bold mb-8">Lent Funds</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Lent Fund Form -->
+      <div class="bg-white shadow-md rounded-lg p-6">
+        <h3 class="text-xl font-semibold mb-4">Add / Edit Lent Fund</h3>
+        <form id="lent-form" class="space-y-4">
+          <input type="hidden" id="fund-id" />
+          <input type="text" id="lender-name" placeholder="Lender Name" required class="w-full p-2 border rounded" />
+          <input type="number" id="lent-amount" placeholder="Amount Lent" required class="w-full p-2 border rounded" />
+          <label for="lent-date" class="block text-sm font-medium text-gray-700">Lent Date</label>
+          <input type="date" id="lent-date" required class="w-full p-2 border rounded" placeholder="Select lent date" title="Select the date the amount was lent" />
+          <label for="expected-return-date" class="block text-sm font-medium text-gray-700">Expected Return Date</label>
+          <input type="date" id="expected-return-date" class="w-full p-2 border rounded" placeholder="Select expected return date" title="Select the expected return date" />
+          <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded">Save Entry</button>
+        </form>
+      </div>
+
+      <!-- Refund Form -->
+      <div class="bg-white shadow-md rounded-lg p-6">
+        <h3 class="text-xl font-semibold mb-4">Record Refund</h3>
+        <form id="refund-form" class="space-y-4">
+          <label for="refund-lender" class="block text-sm font-medium text-gray-700">Select Lender</label>
+          <select id="refund-lender" class="w-full p-2 border rounded" required></select>
+          <input type="number" id="refund-amount" placeholder="Refund Amount" required class="w-full p-2 border rounded" />
+          <label for="refund-date" class="block text-sm font-medium text-gray-700">Refund Date</label>
+          <input type="date" id="refund-date" class="w-full p-2 border rounded" placeholder="Select refund date" title="Select the date of the refund" />
+          <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded">Record Refund</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Summary -->
+    <section class="mt-10">
+      <h3 class="text-xl font-semibold mb-4">Summary</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="bg-blue-100 p-4 rounded shadow">
+          <h4 class="font-medium text-lg">Total Lent</h4>
+          <p class="text-2xl font-bold text-blue-800" id="total-lent">$0.00</p>
+        </div>
+        <div class="bg-green-100 p-4 rounded shadow">
+          <h4 class="font-medium text-lg">Total Refunded</h4>
+          <p class="text-2xl font-bold text-green-800" id="total-refunded">$0.00</p>
+        </div>
+        <div class="bg-red-100 p-4 rounded shadow">
+          <h4 class="font-medium text-lg">Outstanding</h4>
+          <p class="text-2xl font-bold text-red-800" id="total-balance">$0.00</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lent Fund List -->
+    <section class="mt-10">
+      <h3 class="text-xl font-semibold mb-4">Lent Records</h3>
+      <ul id="lent-list" class="space-y-4"></ul>
+    </section>
+  </main>
+
+  <script src="/frontend/js/main.js"></script>
+  <script src="/frontend/js/lentFunds.js"></script>
+</body>
+</html>

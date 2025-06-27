@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Loans - Personal Budget App</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800 min-h-screen">
+  <div id="header-container"></div>
+
+  <main class="p-6 max-w-7xl mx-auto">
+    <h2 class="text-3xl font-bold mb-8">Loans</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Loan Form -->
+      <div class="bg-white shadow-md rounded-lg p-6">
+        <h3 class="text-xl font-semibold mb-4">Add / Edit Loan</h3>
+        <form id="loan-form" class="space-y-4">
+          <input type="text" id="loan-lender" placeholder="Loan Name" required class="w-full p-2 border rounded" />
+
+          <label for="loan-type" class="block text-sm font-medium text-gray-700">Loan Type</label>
+          <select id="loan-type" class="w-full p-2 border rounded" required>
+            <option value="">Select Loan Type</option>
+            <option value="personal">Personal</option>
+            <option value="business">Business</option>
+            <option value="emergency">Emergency</option>
+            <option value="student">Student</option>
+            <option value="mortgage">Mortgage</option>
+            <option value="credit">Credit Card</option>
+            <option value="auto">Auto Loan</option>
+            <option value="medical">Medical</option>
+            <option value="home">Home Improvement</option>
+          </select>
+
+          <input type="number" id="loan-amount" placeholder="Principal Amount" required class="w-full p-2 border rounded" />
+          <input type="number" step="0.01" id="loan-interest" placeholder="Interest Rate (%)" required class="w-full p-2 border rounded" />
+          
+          <label for="loan-due" class="block text-sm font-medium text-gray-700">Due Date</label>
+          <input type="date" id="loan-due" required class="w-full p-2 border rounded" />
+
+          <button type="submit" id="submit-btn" class="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded">
+            Add Loan
+          </button>
+        </form>
+      </div>
+
+      <!-- Repayment Form -->
+      <div class="bg-white shadow-md rounded-lg p-6">
+        <h3 class="text-xl font-semibold mb-4">Record Repayment</h3>
+        <form id="repayment-form" class="space-y-4">
+          <label for="repayment-lender" class="block text-sm font-medium text-gray-700">Select Lender</label>
+          <select id="repayment-lender" class="w-full p-2 border rounded" required></select>
+          <input type="number" id="repayment-amount" placeholder="Amount" required class="w-full p-2 border rounded" />
+          <label for="repayment-date" class="block text-sm font-medium text-gray-700">Repayment Date</label>
+          <input type="date" id="repayment-date" class="w-full p-2 border rounded" />
+          <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded">Record Payment</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Loan Summary -->
+    <section class="mt-10">
+      <h3 class="text-xl font-semibold mb-4">Summary</h3>
+      <div id="loan-summary" class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="bg-blue-100 p-4 rounded shadow">
+          <h4 class="font-medium text-lg">Total Borrowed</h4>
+          <p class="text-2xl font-bold text-blue-800" id="total-borrowed">$0.00</p>
+        </div>
+        <div class="bg-green-100 p-4 rounded shadow">
+          <h4 class="font-medium text-lg">Total Repaid</h4>
+          <p class="text-2xl font-bold text-green-800" id="total-repaid">$0.00</p>
+        </div>
+        <div class="bg-red-100 p-4 rounded shadow">
+          <h4 class="font-medium text-lg">Outstanding</h4>
+          <p class="text-2xl font-bold text-red-800" id="total-outstanding">$0.00</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Loan List -->
+    <section class="mt-10">
+      <h3 class="text-xl font-semibold mb-4">Loan Records</h3>
+      <ul id="loan-list" class="space-y-4"></ul>
+    </section>
+  </main>
+
+  <script src="/frontend/js/main.js"></script>
+  <script src="/frontend/js/loans.js"></script>
+</body>
+</html>

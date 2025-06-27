@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Analytics | mibanco</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="p-6 bg-gray-50">
+  <div id="header-container"></div>
+
+  <!-- Date filter -->
+  <div class="mb-4">
+    <label class="block mb-2 font-medium">Filter by Date:</label>
+    <input type="date" id="startDate" class="border rounded p-2" placeholder="Start Date" title="Start Date" />
+    <label for="endDate" class="sr-only">End Date</label>
+    <input type="date" id="endDate" class="border rounded p-2 ml-2" placeholder="End Date" title="End Date" />
+    <button id="filterBtn" class="bg-blue-500 text-white px-4 py-2 rounded ml-2">Apply</button>
+  </div>
+
+  <!-- Charts -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="bg-white p-4 rounded shadow">
+      <h2 class="text-lg font-semibold mb-2">Income vs Expenses (Monthly)</h2>
+      <canvas id="monthlyChart"></canvas>
+    </div>
+
+    <div class="bg-white p-4 rounded shadow">
+      <h2 class="text-lg font-semibold mb-2">Expense Categories</h2>
+      <canvas id="categoryChart"></canvas>
+    </div>
+
+    <div class="bg-white p-4 rounded shadow md:col-span-2">
+      <h2 class="text-lg font-semibold mb-2">Spending vs Saving Ratio</h2>
+      <canvas id="ratioChart"></canvas>
+    </div>
+
+    <div class="bg-white p-4 rounded shadow md:col-span-2 mt-6">
+     <h2 class="text-lg font-semibold mb-2">Daily Income vs Expenses (This Month)</h2>
+     <canvas id="dailyChart"></canvas>
+   </div>
+
+  </div>
+  <script src="../js/main.js"></script>
+  <script src="../js/analytics"></script>
+
+</body>
+</html>

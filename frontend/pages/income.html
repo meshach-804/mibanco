@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Income - Personal Budget App</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+  <div id="header-container"></div>
+
+  <main class="p-6">
+    <h2 class="text-2xl font-bold mb-4">Add Income</h2>
+
+    <div class="flex flex-col md:flex-row md:space-x-6">
+
+      <!-- Income Form Container -->
+      <div class="md:w-1/2 border border-gray-300 rounded p-4 mb-6 md:mb-0 md:sticky md:top-6 h-fit bg-white shadow">
+        <form id="income-form" class="space-y-4">
+          <input type="hidden" id="income-id" />
+          <input id="income-source" type="text" placeholder="Income source" required class="w-full p-2 border rounded" />
+          <input id="income-amount" type="number" placeholder="Amount" required class="w-full p-2 border rounded" />
+          <label for="income-date" class="block text-sm font-medium text-gray-700">Date</label>
+          <input id="income-date" type="date" required class="w-full p-2 border rounded" />
+          <button id="submit-btn" type="submit" class="px-4 py-2 bg-blue-600 text-white rounded">Add Income</button>
+        </form>
+      </div>
+
+      <!-- Income History Container -->
+      <div class="md:w-1/2 border border-gray-300 rounded p-4 bg-white shadow flex flex-col h-[70vh]">
+        
+        <!-- Scrollable Income List Area -->
+        <section id="income-scroll-section" class="flex-1 overflow-y-auto pr-1">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="text-xl font-semibold">Income History</h3>
+            <span id="income-count" class="text-sm text-gray-500"></span>
+          </div>
+          <ul id="income-list" class="space-y-2 transition-all duration-300 ease-in-out overflow-hidden"></ul>
+          
+          <button id="view-all-btn"
+            class="mt-4 flex items-center gap-1 text-blue-600 hover:text-blue-800 transition-all duration-200 hidden">
+            <span id="toggle-text">View All</span>
+            <svg id="toggle-icon" class="w-4 h-4 transform transition-transform duration-300" fill="none" stroke="currentColor"
+              stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+        </section>
+
+        <!-- Total Income Display (always visible at bottom) -->
+        <div id="total-income-container" class="mt-4 border-t pt-3 text-right text-lg font-semibold text-gray-700">
+          Total Income: <span id="total-income" class="text-green-600">$0.00</span>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="/frontend/js/main.js"></script>
+  <script src="/frontend/js/income.js"></script>
+</body>
+</html>

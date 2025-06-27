@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>mibanco - Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+  <div id="header-container"></div>
+
+  <main class="p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+    <!-- All your cards here, unchanged -->
+    <div class="bg-white p-6 rounded shadow">
+      <h2 class="text-blue-600 font-bold">Total Income</h2>
+      <p id="total-income" class="text-2xl font-semibold">$0.00</p>
+    </div>
+    <div class="bg-white p-6 rounded shadow">
+      <h2 class="text-blue-600 font-bold">Total Expenses</h2>
+      <p id="total-expenses" class="text-2xl font-semibold">$0.00</p>
+    </div>
+    <div class="bg-white p-6 rounded shadow">
+      <h2 class="text-blue-600 font-bold">Total Savings</h2>
+      <p id="total-savings" class="text-2xl font-semibold">$0.00</p>
+    </div>
+    <div class="bg-white p-6 rounded shadow">
+      <h2 class="text-blue-600 font-bold">Total Assets</h2>
+      <p id="total-assets" class="text-2xl font-semibold">$0.00</p>
+    </div>
+    <div class="bg-white p-6 rounded shadow">
+      <h2 class="text-blue-600 font-bold">Total Loans</h2>
+      <p id="total-loans" class="text-2xl font-semibold">$0.00</p>
+    </div>
+    <div class="bg-white p-6 rounded shadow">
+      <h2 class="text-blue-600 font-bold">Balance</h2>
+      <p id="balance" class="text-2xl font-semibold">$0.00</p>
+    </div>
+    <div class="bg-white p-6 rounded shadow">
+      <h2 class="text-blue-600 font-bold">Net Worth</h2>
+      <p id="net-worth" class="text-2xl font-semibold text-green-600">$0.00</p>
+    </div>
+    <div class="bg-white p-6 rounded shadow">
+      <h2 class="text-blue-600 font-bold">Debt-to-Asset Ratio</h2>
+      <p id="debt-to-asset" class="text-2xl font-semibold">0.00</p>
+    </div>
+    <div class="bg-white p-6 rounded shadow col-span-1 sm:col-span-2">
+  <h2 class="text-blue-600 font-bold">Emergency Fund</h2>
+  <p id="emergency-status" class="text-xl font-bold mb-1">Not Ready</p>
+  <p id="emergency-amount" class="text-sm text-gray-600 mb-2">$0.00 of $0.00 saved</p>
+  <div class="w-full h-2 bg-gray-200 rounded-full">
+    <div class="h-full bg-blue-400 rounded-full emergency-fund-bar emergency-fund-bar-width"></div>
+  </div>
+</div>
+
+    <div class="bg-white p-6 rounded shadow col-span-1 sm:col-span-2">
+      <h2 class="text-blue-600 font-bold">Total Lent</h2>
+      <p id="total-lent" class="text-2xl font-semibold">$0.00</p>
+    </div>
+  </main>
+
+  <script>
+    // Load reusable header
+    fetch('/frontend/components/header.html')
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('header-container').innerHTML = html;
+      });
+  </script>
+
+  <script src="/frontend/js/index.js"></script>
+</body>
+</html>
