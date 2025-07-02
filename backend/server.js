@@ -14,6 +14,7 @@ const loansRoutes = require('./routes/loansRoute');
 const lentFundsRoutes = require('./routes/lentFundsRoute')
 const analyticsRoutes = require('./routes/analyticsRoute');
 const usersRoutes = require('./routes/usersRoute');
+const reportsRoutes = require('./routes/reportsRoute')
 const goalsRoutes = require('./routes/goalsRoute'); // ✅ Added Goals route
 
 const app = express();
@@ -30,7 +31,8 @@ app.use('/api/loans', loansRoutes);
 app.use('/api/analytics', analyticsRoutes);
 app.use('/api/users', usersRoutes);
 app.use('/api/lentFunds', lentFundsRoutes)
-app.use('/api/goals', goalsRoutes); // ✅ Registered /api/goals
+app.use('/api/goals', goalsRoutes); 
+app.use('/api/reports', reportsRoutes)
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Connected to mysql database\nServer running on port ${PORT}`));

@@ -2,21 +2,67 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <title>Reports - MiBanco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Reports - Personal Budget App</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 text-gray-800">
+<body class="bg-gray-50 text-gray-800 min-h-screen">
   <div id="header-container"></div>
 
-  <main class="p-6">
-    <h2 class="text-2xl font-bold mb-4">Financial Reports</h2>
+  <main class="max-w-6xl mx-auto p-6">
+    <h1 class="text-3xl font-bold mb-6">Generate Reports</h1>
 
-    <div class="bg-white p-6 rounded shadow">
-      <p class="text-gray-600">Downloadable reports and summaries will be available here.</p>
+    <div class="bg-white p-6 rounded shadow space-y-4 mb-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div>
+          <label class="block text-sm font-medium">Start Date</label>
+          <input type="date" id="start-date" class="w-full p-2 border rounded" placeholder="Select start date" title="Select start date" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium">End Date</label>
+          <input type="date" id="end-date" class="w-full p-2 border rounded" placeholder="Select end date" title="Select end date" />
+        </div>
+        <div>
+          <label for="report-type" class="block text-sm font-medium">Module</label>
+          <select id="report-type" class="w-full p-2 border rounded">
+            <option value="loans">Loans</option>
+            <option value="lentFunds">Lent Funds</option>
+            <option value="assets">Assets</option>
+            <option value="expenses">Expenses</option>
+            <option value="goals">Goals</option>
+            <option value="savings">Savings</option>
+          </select>
+        </div>
+        <div class="flex items-end">
+          <button id="generate-btn" class="bg-blue-600 text-white w-full py-2 rounded hover:bg-blue-700">
+            Generate Report
+          </button>
+        </div>
+      </div>
+
+      <div class="flex gap-4">
+        <button id="download-csv" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Export CSV</button>
+        <button id="download-pdf" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Export PDF</button>
+      </div>
     </div>
+    
+
+        <section id="report-output" class="bg-white p-6 rounded shadow space-y-4">
+      <div class="flex items-center justify-between">
+        <h2 class="text-xl font-semibold">Report Data</h2>
+        <label for="view-toggle" class="sr-only">View as</label>
+        <select id="view-toggle" class="border p-2 rounded text-sm">
+          <option value="json">JSON</option>
+          <option value="table">Table</option>
+        </select>
+      </div>
+      <pre id="report-data" class="bg-gray-100 p-4 rounded overflow-x-auto text-sm text-gray-700 whitespace-pre-wrap"></pre>
+      <div id="report-table" class="overflow-x-auto hidden text-sm"></div>
+    </section>
+
   </main>
 
   <script src="/frontend/js/main.js"></script>
+  <script src="/frontend/js/reports.js"></script>
 </body>
 </html>
